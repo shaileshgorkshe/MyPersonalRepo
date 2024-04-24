@@ -8,7 +8,9 @@ from openpyxl.utils.exceptions import IllegalCharacterError
 from datetime import datetime
 import requests
 import json
+import os
 
+cwd = os.getcwd()
 if len(sys.argv) < 2 or not sys.argv[1]:
     print("Please provide a project name as an argument.")
     sys.exit(1)
@@ -72,7 +74,8 @@ DBUser = db_username
 DBPassword = db_password
 now = datetime.now()
 Exec_Time = now.strftime("%Y-%m-%d %H:%M:%S")
-FilePath = "C:/Scripts/Python/Result/"+CustEnv+" "+Exec_Time.replace(":","_")+".xlsx"
+#FilePath = cwd+"/"+CustEnv+" "+Exec_Time.replace(":","_")+".xlsx"
+FilePath = cwd+"/DBResult.xlsx"
 
 if DBType != "postgres" and DBType != "aurora":
     print("'"+sys.argv[1]+"' this customer's Database is not PostgresSQL OR AWS RDS Database.")
